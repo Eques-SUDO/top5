@@ -24,15 +24,21 @@
             padding: 20px;
         }
 
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+        }
+
         /* Image Sections */
         .image-section {
             width: 100%;
-            
+            margin-bottom: 20px;
         }
 
         .image-section img {
             width: 100%;
-            
+            height: auto;
             object-fit: cover;
             display: block;
         }
@@ -200,56 +206,144 @@
 
         .reservation-text {
             color: #000000;
-            font-size: 3rem;
+            font-size: 1.2rem;
             line-height: 1.6;
             max-width: 700px;
             margin: 0 auto;
         }
 
+        /* Form Styling */
+        .form-container {
+            max-width: 600px;
+            margin: 30px auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #00cc66;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.3s;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: #00cc66;
+        }
+
+        .submit-button {
+            width: 100%;
+            background-color: #00cc66;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-family: 'Anton', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 15px rgba(0, 204, 102, 0.3);
+        }
+
+        .submit-button:hover {
+            background-color: #00b359;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 204, 102, 0.4);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .submit-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .map-container {
+            width: 100%;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .map-container iframe {
+            border: 0;
+            border-radius: 10px;
+            width: 100%;
+            height: 450px;
+            display: block;
+        }
+
         @media (max-width: 768px) {
-            .image-section img {
-                height: 250px;
+            .container {
+                padding: 10px;
             }
 
-            .testimonials-section {
-                padding: 40px 20px;
+            .form-input,
+            .form-textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
             }
 
-            .testimonials-section h2 {
-                font-size: 2rem;
+            .map-container iframe {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
             }
 
-            .testimonial p {
-                font-size: 1rem;
+            .form-input,
+            .form-textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
             }
 
-            .offer-section {
-                padding: 40px 20px;
-            }
-
-            .offer-button {
-                padding: 15px 40px;
-                font-size: 1.5rem;
-            }
-
-            .price-box {
-                padding: 40px 30px;
-            }
-
-            .pack-title {
-                font-size: 2rem;
-            }
-
-            .old-price {
-                font-size: 1.5rem;
-            }
-
-            .new-price {
-                font-size: 3rem;
-            }
-
-            .reservation-text {
-                font-size: 1rem;
+            .map-container iframe {
+                height: 300px;
             }
         }
     </style>
@@ -284,25 +378,25 @@
 
             <p class="reservation-text">Pour réserver, vous devez remplir ce formulaire et nous vous contacterons dans les plus brefs délais pour toute information</p>
 
-            <form id="contactForm" style="max-width: 600px; margin: 30px auto; text-align: left;">
-                <div style="margin-bottom: 20px;">
-                    <label for="nom" style="display: block; margin-bottom: 5px; font-weight: 600;">Nom:</label>
-                    <input type="text" id="nom" name="nom" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 1rem;">
+            <form id="contactForm" class="form-container">
+                <div class="form-group">
+                    <label for="nom" class="form-label">Nom:</label>
+                    <input type="text" id="nom" name="nom" required class="form-input">
                 </div>
 
-                <div style="margin-bottom: 20px;">
-                    <label for="telephone" style="display: block; margin-bottom: 5px; font-weight: 600;">Téléphone:</label>
-                    <input type="tel" id="telephone" name="telephone" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 1rem;">
+                <div class="form-group">
+                    <label for="telephone" class="form-label">Téléphone:</label>
+                    <input type="tel" id="telephone" name="telephone" required class="form-input">
                 </div>
 
-                <div style="margin-bottom: 20px;">
-                    <label for="message" style="display: block; margin-bottom: 5px; font-weight: 600;">Message:</label>
-                    <textarea id="message" name="message" required rows="4" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 1rem; resize: vertical;"></textarea>
+                <div class="form-group">
+                    <label for="message" class="form-label">Message:</label>
+                    <textarea id="message" name="message" required class="form-textarea"></textarea>
                 </div>
 
-                <button type="submit" style="width: 100%; background-color: #00cc66; color: white; border: none; padding: 15px; font-family: 'Anton', sans-serif; font-size: 1.5rem; text-transform: uppercase; border-radius: 10px; cursor: pointer; transition: all 0.3s;">Envoyer</button>
+                <button type="submit" class="submit-button">Envoyer</button>
 
-                <div id="formMessage" style="margin-top: 20px; padding: 15px; border-radius: 8px; display: none; text-align: center; font-weight: 600;"></div>
+                <div id="formMessage" class="form-message"></div>
             </form>
         </div>
          <!-- Image 3 -->
@@ -311,8 +405,8 @@
         </div>
 
         <!-- Google Maps Location -->
-        <div style="width: 100%; margin: 30px 0;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13244.726837894873!2d-7.6407868!3d33.5865171!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2e9777f5ead%3A0xda564a4f3ecd5704!2sTOP%20MINCEUR%20ET%20ANTI%20%C3%82GE%20-%20%C3%89pilation%20laser%20%2CHydrafacial%20%2C%20Centre%20d&#39;amincissement%20%2CMicroneedling%20-%20D%C3%A9tatouage%20-%20HIFU!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s" width="100%" height="450" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13244.726837894873!2d-7.6407868!3d33.5865171!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2e9777f5ead%3A0xda564a4f3ecd5704!2sTOP%20MINCEUR%20ET%20ANTI%20%C3%82GE%20-%20%C3%89pilation%20laser%20%2CHydrafacial%20%2C%20Centre%20d&#39;amincissement%20%2CMicroneedling%20-%20D%C3%A9tatouage%20-%20HIFU!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <!-- Final Image -->
@@ -322,31 +416,6 @@
     </div>
 
     <script>
-        let currentIndex = 0;
-        const testimonials = document.querySelectorAll('.testimonial');
-        const dots = document.querySelectorAll('.dot');
-
-        function showSlide(index) {
-            testimonials.forEach((testimonial, i) => {
-                testimonial.classList.remove('active');
-                dots[i].classList.remove('active');
-            });
-
-            currentIndex = index;
-            testimonials[currentIndex].classList.add('active');
-            dots[currentIndex].classList.add('active');
-        }
-
-        function currentSlide(index) {
-            showSlide(index);
-        }
-
-        // Auto-play carousel
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % testimonials.length;
-            showSlide(currentIndex);
-        }, 5000);
-
         // Handle form submission
         const form = document.getElementById('contactForm');
         const formMessage = document.getElementById('formMessage');
